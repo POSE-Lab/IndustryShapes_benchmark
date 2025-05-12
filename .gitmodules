@@ -1,0 +1,9 @@
+[submodule "instance_based/epos/i6DL-Edge-Lite"]
+	path = instance_based/epos/i6DL-Edge-Lite
+	url = https://github.com/POSE-Lab/i6DL-Edge-Lite
+[submodule "instance_based/dope/dope"]
+	path = instance_based/dope/dope
+	url = https://github.com/vagsart/dope
+[submodule "novel_objects/foundation_pose/FoundationPose"]
+	path = novel_objects/foundation_pose/FoundationPose
+	url = https://github.com/POSE-Lab/FoundationPose
