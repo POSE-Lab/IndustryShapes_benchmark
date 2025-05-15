@@ -3,4 +3,3 @@ Repo aggregating code for all methods used to evaluate the [IndustryShapes datas
 
 Ensure submodules are up-to-date with `git submodule update --remote --merge`.
 
-Testing requests

@@ -1,7 +1,3 @@
-[submodule "instance_based/epos/i6DL-Edge-Lite"]
-	path = instance_based/epos/i6DL-Edge-Lite
-	url = https://github.com/POSE-Lab/i6DL-Edge-Lite
-	branch =  main
 [submodule "instance_based/dope/dope"]
 	path = instance_based/dope/dope
 	url = https://github.com/vagsart/dope
