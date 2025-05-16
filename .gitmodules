@@ -5,3 +5,6 @@
 [submodule "novel_objects/foundpose"]
 	path = novel_objects/foundpose
 	url = https://github.com/POSE-Lab/foundpose_IS
+[submodule "novel_objects/novel_objects/foundation_pose"]
+	path = novel_objects/novel_objects/foundation_pose
+	url = https://github.com/POSE-Lab/FoundationPose_IS
