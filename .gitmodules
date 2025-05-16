@@ -2,10 +2,6 @@
 	path = instance_based/dope/dope
 	url = https://github.com/vagsart/dope
 	branch = main
-[submodule "novel_objects/foundation_pose/FoundationPose"]
-	path = novel_objects/foundation_pose/FoundationPose
-	url = https://github.com/POSE-Lab/FoundationPose
-	branch = main
 [submodule "novel_objects/foundpose"]
 	path = novel_objects/foundpose
 	url = https://github.com/POSE-Lab/foundpose_IS
