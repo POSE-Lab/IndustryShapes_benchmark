@@ -5,7 +5,25 @@ This repository aggregates code for all methods used to evaluate the [IndustrySh
 
 ## Overview
 
+## Download the dataset
+### Using the Hugging Face CLI
 
+```
+from datasets import load_dataset
+ds = load_dataset("POSE-Lab/IndustryShapes")
+```
+Note that in the dataset hosted in hf each sample corresponds to one object pose. The train split consists of the IndustryShapes Classic Train set and the Onboardings. The test split consists of the IndustryShapes Classic Test and Extended test sets. 
+## Download the dataset in BOP format
+
+Additionally, we provide the data in BOP format inside the ```bop_fromat``` folder which contains:
+```
+bop_format
+├── IndustryShapes_Classic_test.zip
+├── IndustryShapes_Classic_train.zip
+├── IndustryShapes_Extended_test.zip
+├── IndustryShapes_Onboardings_static.zip
+└── IndustryShapes_cad_models.zip
+```
 
 ## Training
 
