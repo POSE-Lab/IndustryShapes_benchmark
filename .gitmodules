@@ -11,3 +11,6 @@
 [submodule "instance_based/epos/epos"]
 	path = instance_based/epos/epos
 	url = https://github.com/POSE-Lab/epos_IS
+[submodule "instance_based/dope2"]
+	path = instance_based/dope2
+	url = https://github.com/POSE-Lab/Deep_Object_Pose_IS
