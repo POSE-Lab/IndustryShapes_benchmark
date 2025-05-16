@@ -8,3 +8,6 @@
 [submodule "foundation_pose"]
 	path = foundation_pose
 	url = https://github.com/POSE-Lab/FoundationPose_IS
+[submodule "instance_based/epos/epos"]
+	path = instance_based/epos/epos
+	url = https://github.com/POSE-Lab/epos_IS
