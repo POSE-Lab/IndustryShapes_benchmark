@@ -1,9 +1,38 @@
-# IndustryShapes benchmark
-A repo aggregating code for all methods used to evaluate the [IndustryShapes dataset](https://huggingface.co/datasets/POSE-Lab/IndustryShapes) for 6D pose estimation of industrial tools and components in our NeurIPS 2025 submission on the Datasets and Benchmarks track. 
+# IndustryShapes: An RGB-D dataset for 6D object pose estimation of industrial assembly components and tools
 
-Ensure submodules are up-to-date with `git submodule update --remote --merge`.
+This repository aggregates code for all methods used to evaluate the [IndustryShapes dataset](https://huggingface.co/datasets/POSE-Lab/IndustryShapes) that we introduce in our NeurIPS 2025 submission on the Datasets and Benchmarks track. IndustryShapes is an RGB-D dataset of industrial tools and components designed for both instance-level and novel object 6d pose estimation approaches that features diverse modalities, including static onboarding sequences, complexity of scenes, and meticulous annotations. Indicative samples from training and test scenes can be seen in the figures below. For evaluation, we selected representative state-of-the-art instance-based ([EPOS](https://github.com/thodan/epos), [DOPE](https://github.com/NVlabs/Deep_Object_Pose)) and novel object methods ([FoundPose](https://github.com/facebookresearch/foundpose), [FoundationPose](https://github.com/NVlabs/FoundationPose)). 
 
-Code for image generation: https://github.com/POSE-Lab/6DL-PoseGenerator
 
-Trained weights available on https://ntuagr-my.sharepoint.com/:f:/g/personal/mpateraki_ntua_gr/EiOD3lZqKeBLmtQoIF1Rc14BeuKMcOA5jpf7FJMSHOWUWg
+## Overview
+
+
+
+## Training
+
+
+
+## Evaluation
+
+
+
+## Pre-trained Models
+
+You can download pretrained models for the instance-based methods here:
+
+- [IndustryShapes weights](https://ntuagr-my.sharepoint.com/:f:/g/personal/mpateraki_ntua_gr/EiOD3lZqKeBLmtQoIF1Rc14BeuKMcOA5jpf7FJMSHOWUWg) 
+The `dope` folder includes 5 weights files `obj_<obj_id>.pth`. For EPOS, you should use all files in the `epos` folder. 
+
+## Results
+
+The evaluated methods achieve the following performance on our dataset:
+
+[placeholder]
+
+| Model name         | Top 1 Accuracy  | Top 5 Accuracy |
+| ------------------ |---------------- | -------------- |
+| My awesome model   |     85%         |      95%       |
+ 
+## Synthetic image generation
+
+We have made the code used for producing the synthetic scenes in our dataset available in a separate GitHub repository [here](https://github.com/POSE-Lab/6DL-PoseGenerator). Please refer to that repository for further instructions. 
 
