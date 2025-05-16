@@ -1,5 +1,5 @@
 # IndustryShapes benchmark
-A repo aggregating code for all methods used to evaluate the [IndustryShapes dataset](https://huggingface.co/datasets/POSE-Lab/IndustryShapes) for 6D pose estimation of industrial tools and components in our NeurIPS 2025 submission . 
+A repo aggregating code for all methods used to evaluate the [IndustryShapes dataset](https://huggingface.co/datasets/POSE-Lab/IndustryShapes) for 6D pose estimation of industrial tools and components in our NeurIPS 2025 submission on the Datasets and Benchmarks track. 
 
 Ensure submodules are up-to-date with `git submodule update --remote --merge`.
 
