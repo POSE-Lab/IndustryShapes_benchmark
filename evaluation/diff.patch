@@ -1,0 +1,118 @@
+diff --git a/bop_toolkit_lib/dataset_params.py b/bop_toolkit_lib/dataset_params.py
+index 3404cb1..e9488c5 100644
+--- a/bop_toolkit_lib/dataset_params.py
++++ b/bop_toolkit_lib/dataset_params.py
+@@ -97,7 +97,9 @@ def get_model_params(datasets_path, dataset_name, model_type=None):
+         "hot3d": list(range(1, 34)),
+         "handal": list(range(1, 41)),
+         "ipd": [0, 1, 4, 8, 10, 11, 14, 18, 19, 20],
+-        "xyzibd": [1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
++        "xyzibd": [1, 2, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
++        "isextended": [1, 2, 3, 4, 5],
++        "isclassic": [1, 2, 3, 4, 5]
+     }[dataset_name]
+ 
+     # ID's of objects with ambiguous views evaluated using the ADI pose error
+@@ -121,7 +123,9 @@ def get_model_params(datasets_path, dataset_name, model_type=None):
+         "hot3d": [1, 2, 3, 5, 22, 24, 25, 29, 30, 32],
+         "handal": [26, 35, 36, 37, 38, 39, 40],
+         "ipd": [8, 14, 18, 19, 20],
+-        "xyzibd": [1, 2, 5, 8, 9, 11, 12, 16, 17]
++        "xyzibd": [1, 2, 5, 8, 9, 11, 12, 16, 17],
++        "isextended": [],
++        "isclassic": []
+     }[dataset_name]
+ 
+     # T-LESS includes two types of object models, CAD and reconstructed.
+@@ -414,6 +418,35 @@ def get_split_params(datasets_path, dataset_name, split, split_type=None):
+             p["depth_range"] = None  # Not calculated yet.
+             p["azimuth_range"] = None  # Not calculated yet.
+             p["elev_range"] = None  # Not calculated yet.
++            
++    # IS_Classic.
++    elif dataset_name == "isclassic":
++        p["scene_ids"] = {
++            "train": [],
++            "val": [],
++            "test": [1, 2, 3, 4, 5, 6, 7, 8],
++        }[split]
++        p["im_size"] = (640, 480)
++
++        if split == "test":
++            p["depth_range"] = None
++            p["azimuth_range"] = None
++            p["elev_range"] = None
++
++    # IS_Extended.
++    elif dataset_name == "isextended":
++        p["scene_ids"] = {
++            "train": [],
++            "val": [],
++            "test": [1, 2, 3],
++        }[split]
++        p["im_size"] = (640, 480)
++        
++        if split == "test":
++            p["depth_range"] = None
++            p["azimuth_range"] = None
++            p["elev_range"] = None
++
+ 
+     # HOT3D.
+     elif dataset_name == "hot3d":
+diff --git a/scripts/eval_bop19_pose.py b/scripts/eval_bop19_pose.py
+index af8aad8..d68732a 100644
+--- a/scripts/eval_bop19_pose.py
++++ b/scripts/eval_bop19_pose.py
+@@ -40,6 +40,8 @@ p = {
+                 "tyol": 15,
+                 "ycbv": 15,
+                 "hope": 15,
++                "isclassic": 15,
++                "isextended": 15,
+             },
+             "vsd_taus": list(np.arange(0.05, 0.51, 0.05)),
+             "vsd_normalized_by_diameter": True,
+@@ -55,6 +57,11 @@ p = {
+             "type": "mspd",
+             "correct_th": [[th] for th in np.arange(5, 51, 5)],
+         },
++        {
++            "n_top": -1,
++            "type": "add",
++            "correct_th": [[th] for th in np.arange(0.05, 0.51, 0.05)],
++        },
+     ],
+     # Minimum visible surface fraction of a valid GT pose.
+     # by default, we consider only objects that are at least 10% visible
+@@ -134,7 +141,7 @@ for result_filename in result_filenames:
+         # Calculate error of the pose estimates.
+         calc_error_script, is_gpu_script_used = misc.get_eval_calc_errors_script_name(args.use_gpu, error["type"], dataset)
+         calc_errors_cmd = [
+-            "python",
++            "python3",
+             os.path.join(
+                 os.path.dirname(os.path.realpath(__file__)),
+                 calc_error_script,
+@@ -193,7 +200,7 @@ for result_filename in result_filenames:
+         for error_sign, error_dir_path in error_dir_paths.items():
+             for correct_th in error["correct_th"]:
+                 calc_scores_cmd = [
+-                    "python",
++                    "python3",
+                     os.path.join(
+                         os.path.dirname(os.path.realpath(__file__)),
+                         "eval_calc_scores.py",
+diff --git a/scripts/show_performance_bop19.py b/scripts/show_performance_bop19.py
+index 6b7dfa3..157b56b 100644
+--- a/scripts/show_performance_bop19.py
++++ b/scripts/show_performance_bop19.py
+@@ -35,6 +35,8 @@ p = {
+                 "tyol": 15,
+                 "ycbv": 15,
+                 "hope": 15,
++                "isclassic": 15,
++                "isextended": 15,
+             },
+             "vsd_taus": list(np.arange(0.05, 0.51, 0.05)),
+             "correct_th": [[th] for th in np.arange(0.05, 0.51, 0.05)],

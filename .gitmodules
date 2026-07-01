@@ -14,3 +14,6 @@
 [submodule "instance_based/dope2"]
 	path = instance_based/dope2
 	url = https://github.com/POSE-Lab/Deep_Object_Pose_IS
+[submodule "evaluation/bop_toolkit"]
+	path = evaluation/bop_toolkit
+	url = https://github.com/thodan/bop_toolkit.git
