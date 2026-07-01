@@ -76,16 +76,22 @@ echo "Renaming folders to lowercase (isclassic, isextended) for BOP toolkit comp
 
 # Assuming the zip extracts into a folder named IS_Classic (or similar)
 # We will use wildcards or explicit checks if the folder name is known
+mkdir -p isclassic/test
 if [ -d "IS_Classic" ]; then
-    mv IS_Classic isclassic
+    mv IS_Classic/* isclassic/test/
+    rm -rf IS_Classic
 elif [ -d "IndustryShapes_Classic_test" ]; then
-    mv IndustryShapes_Classic_test isclassic
+    mv IndustryShapes_Classic_test/* isclassic/test/
+    rm -rf IndustryShapes_Classic_test
 fi
 
+mkdir -p isextended/test
 if [ -d "IS_Extended" ]; then
-    mv IS_Extended isextended
+    mv IS_Extended/* isextended/test/
+    rm -rf IS_Extended
 elif [ -d "IndustryShapes_Extended_test" ]; then
-    mv IndustryShapes_Extended_test isextended
+    mv IndustryShapes_Extended_test/* isextended/test/
+    rm -rf IndustryShapes_Extended_test
 fi
 
 # The models are typically required inside the dataset folder for metrics like ADD
@@ -104,6 +110,11 @@ if [ -d "models" ] || [ -d "IndustryShapes_cad_models" ] || [ -d "IndustryShapes
         ln -sfn "../$MODEL_DIR" isextended/models_eval
     fi
 fi
+
+
+mv test_targets_extended.json ./isextended/test_targets_extended.json
+mv test_targets_classic.json ./isclassic/test_targets_classic.json
+
 
 # Optional: clean up zip files to save space
 # rm IS_Classic.zip IS_Extended.zip CAD_Models.zip
