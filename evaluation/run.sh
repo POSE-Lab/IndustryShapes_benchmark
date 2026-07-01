@@ -1,4 +1,3 @@
-source /home/vagsart/src/novasplat/venv_novasplat/bin/activate
 export PYTHONPATH=bop_toolkit 
 export BOP_PATH=$(pwd)/data/bop_h3
 
