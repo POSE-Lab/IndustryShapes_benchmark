@@ -19,7 +19,7 @@ cd ..
 pip install -r bop_toolkit/requirements.txt
 ```
 
-## 2. Download and Setup Dataset
+## 2. Download and Setup Dataset 
 
 The BOP Toolkit has a very strict parser and expects dataset names to be entirely alphanumeric (lowercase without dashes).
 
